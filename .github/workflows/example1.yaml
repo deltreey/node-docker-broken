@@ -1,0 +1,22 @@
+name: Build
+
+on: [ push ]
+
+jobs:
+  Build-And-Push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '8.17.0'
+      - name: "Build & push Docker image"
+        uses: mr-smithers-excellent/docker-build-push@v6.3
+        with:
+          registry: ghcr.io
+          image: deltreey/node-docker-broken
+          tags: latest
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
