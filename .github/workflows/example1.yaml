@@ -14,7 +14,9 @@ jobs:
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-          which nvm
+          echo "Installed..."
+          $NVM_DIR/nvm.sh
+          echo "Testing..."
           nvm install v8.17.0
           nvm use
       - name: Configure NVM again
